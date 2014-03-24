@@ -1,0 +1,6 @@
+* text=auto
+
+# Declare files that will always have LF line endings on checkout.
+*.sh text eol=lf
+*.rb text eol=lf
+*.erb text eol=lf
