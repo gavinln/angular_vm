@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-3">
+        <img src="images/spring.jpg" class="img-responsive img-rounded">
+    </div>
+    <div class="col-md-9">
+        <form role="form">
+            <h4>Holidays: <span ng-bind="seasons.selectedCount()"></span> selected</h4>
+            <div class="checkbox" ng-repeat="date in season">
+                <label>
+                    <input type="checkbox"
+                        ng-checked="seasons.isSelected(date)"
+                        ng-click="seasons.toggleSelection(date)"> {{ date }}
+                </label>
+            </div>
+            <div class="form=group">
+                <a href="#/summer" class="btn btn-primary pull-right active"
+                    role="button">Next</a>
+            </div>
+            <div class="clearfix"/>
+        </form>
+        <h4>Movies</h4>
+        <ul ng-repeat="movie in movies">
+            <li>{{ movie.Title }}</li>
+        </ul>
+    </div>
+</div>
