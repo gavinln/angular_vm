@@ -21,6 +21,15 @@ grunt serve
 8. Open the browser to the location below
 http://localhost:9000/
 
-Install compass
-sudo gem update --system
-sudo gem install compass
+To run express.js example
+1. Change to the express example directory
+cd /vagrant/express/nodetest1
+
+2. Install project dependencies for node.js
+sudo npm install --no-bin-links
+
+3. Start express.js server
+node app.js
+
+
+
