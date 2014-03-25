@@ -15,6 +15,7 @@ class dev {
         init:;
         #ohmyzsh: require => Class[init];
         javascript: require => Class[init];
+        mongodb_install: require => Class[init];
     }
 }
 
