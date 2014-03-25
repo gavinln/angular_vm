@@ -7,5 +7,6 @@ js/app/bower_components
 *.class
 *.swp
 .vagrant
+express/nodetest1/node_modules
 
 
