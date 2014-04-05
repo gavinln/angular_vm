@@ -62,7 +62,7 @@ Running
     bower install
     ```
 
-    or if your git ports are blocked run the following before bower
+    or if your git ports(9418) are blocked run the following before bower
 
     ```
     git config --global url."https://".insteadOf git://
