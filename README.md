@@ -64,9 +64,9 @@ Running
 
     or if your git ports are blocked run the following before bower
 
-    '''
+    ```
     git config --global url."https://".insteadOf git://
-    '''
+    ```
 
 6. Start the Javascript server
 
