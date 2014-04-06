@@ -31,5 +31,7 @@ sudo npm install --no-bin-links
 3. Start express.js server
 node app.js
 
+TODO: Remove mongodb setup and express.js example
+
 
 
