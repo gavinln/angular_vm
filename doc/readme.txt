@@ -21,17 +21,13 @@ grunt serve
 8. Open the browser to the location below
 http://localhost:9000/
 
-To run express.js example
-1. Change to the express example directory
-cd /vagrant/express/nodetest1
+Check for errors
+1. Change to the project javascript directory
+cd /vagrant/js
 
-2. Install project dependencies for node.js
-sudo npm install --no-bin-links
+2.  Check javascript code
+grunt jshint
 
-3. Start express.js server
-node app.js
-
-TODO: Remove mongodb setup and express.js example
 
 
 
