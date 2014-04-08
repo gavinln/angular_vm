@@ -15,6 +15,9 @@ class dev {
         init:;
         javascript: require => Class[init];
         mongodb_install: require => Class[init];
+
+        apt: require => Class[init];
+        googlechrome: require => Class[apt];
     }
 }
 
