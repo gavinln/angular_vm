@@ -2,7 +2,7 @@
 #
 class custom {
     class {
-        apt: require => Class[init];
+        apt:;
         googlechrome: require => Class[apt];
     }
 }
