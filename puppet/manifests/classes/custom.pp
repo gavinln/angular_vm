@@ -1,6 +1,8 @@
 # miscellaneous software
 #
 class custom {
-    class { 'googlechrome':
+    class {
+        apt: require => Class[init];
+        googlechrome: require => Class[apt];
     }
 }

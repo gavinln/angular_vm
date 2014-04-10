@@ -28,6 +28,9 @@ cd /vagrant/js
 2.  Check javascript code
 grunt jshint
 
-
-
+To run the Chrome browser
+1. Install Chromium
+sudo apt-get install libxss1
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
 

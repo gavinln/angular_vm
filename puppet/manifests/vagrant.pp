@@ -15,7 +15,6 @@ class dev {
         init:;
         javascript: require => Class[init];
         mongodb_install: require => Class[init];
-        #custom: require => Class[init];
     }
 }
 
