@@ -29,5 +29,10 @@ cd /vagrant/js
 grunt jshint
 
 Run Javascript unit tests
-1. Set Display
+1. Set Display number
+export DISPLAY=:0
 
+2. Run tests
+grunt test
+
+Xlib:  extension "RANDR" missing on display ":0"
