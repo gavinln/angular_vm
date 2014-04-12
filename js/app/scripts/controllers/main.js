@@ -33,8 +33,8 @@
   });
 
   angularVmApp.controller(
-    'MainCtrl', ['$scope', '$http', '$location', 'seasons',
-      function ($scope, $http, $location, seasons) {
+    'MainCtrl', ['$scope', 'seasons',
+      function ($scope, seasons) {
         $scope.seasons = seasons.state;
       }]);
 
