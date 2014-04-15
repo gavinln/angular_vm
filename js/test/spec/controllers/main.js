@@ -18,7 +18,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of seasons to the scope', function () {
+  it('should attach a list of 4 seasons to the scope', function () {
     var seasonsLength = 0;
     for (var key in scope.seasons) {
         if (scope.seasons.hasOwnProperty(key)) {

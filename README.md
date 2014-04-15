@@ -79,27 +79,50 @@ http://localhost:9000/
 
 8. To stop the server type `Ctrl+C`
 
-9. Type `exit` to quit the virtual machine
+9. To check the Javascript code using [jshint][10]. A formatting error has been added.
 
-10. To destroy the VM
+    ```bash
+    grunt jshint
+    ```
+
+10. Setup the [Xvfb][11] virtual display to run the [Chrome][12] browser.
+
+    ```bash
+    export DISPLAY=:0
+    ```
+
+11. Run unit tests using the [Karma][13] test runner with the [Jasmine][14] framework.
+
+    ```bash
+    grunt test
+    ```
+
+12. Type `exit` to quit the virtual machine
+
+13. To destroy the VM
 
     ```
     vagrant destroy -f
     ```
 
+[10]: http://www.jshint.com/
+[11]: http://en.wikipedia.org/wiki/Xvfb
+[12]: https://www.google.com/intl/en/chrome/browser/
+[13]: http://karma-runner.github.io/
+[14]: http://jasmine.github.io/2.0/introduction.html
 
 Requirements
 ------------
 
 The following software is needed to get the software from github and run
-Vagrant. The Git environment also provides an [SSH  client][10] for Windows.
+Vagrant. The Git environment also provides an [SSH  client][15] for Windows.
 
-* [Oracle VM VirtualBox][11]
-* [Vagrant][12]
-* [Git][13]
+* [Oracle VM VirtualBox][16]
+* [Vagrant][17]
+* [Git][18]
 
-[10]: http://en.wikipedia.org/wiki/Secure_Shell
-[11]: https://www.virtualbox.org/
-[12]: http://vagrantup.com/
-[13]: http://git-scm.com/
+[15]: http://en.wikipedia.org/wiki/Secure_Shell
+[16]: https://www.virtualbox.org/
+[17]: http://vagrantup.com/
+[18]: http://git-scm.com/
 
