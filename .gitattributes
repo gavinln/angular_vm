@@ -4,3 +4,4 @@
 *.sh text eol=lf
 *.rb text eol=lf
 *.erb text eol=lf
+*.init text eol=lf
