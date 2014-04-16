@@ -35,7 +35,10 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
+
+    // Need for bug: https://github.com/karma-runner/karma/issues/895
+    usePolling: true,
 
 
     // Start these browsers, currently available:

@@ -38,4 +38,5 @@ grunt test
 Check the following
 http://www.youtube.com/watch?v=AKwqfHm-3ZQ
 
-./node_modules/karma/bin/karma start --auto-watch
+# Runs tests automatically when saving files
+./node_modules/karma/bin/karma start

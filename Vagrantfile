@@ -23,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network :forwarded_port, guest: 3000, host: 3000  # node.js
+  config.vm.network :forwarded_port, guest: 8080, host: 8080  # test karma server
   config.vm.network :forwarded_port, guest: 9000, host: 9000  # grunt node.js
   config.vm.network :forwarded_port, guest: 35729, host: 35729   # livereload
   config.vm.network :forwarded_port, guest: 28017, host: 28017  # mongodb
