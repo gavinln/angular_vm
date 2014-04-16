@@ -35,4 +35,7 @@ export DISPLAY=:0
 2. Run tests
 grunt test
 
-Xlib:  extension "RANDR" missing on display ":0"
+Check the following
+http://www.youtube.com/watch?v=AKwqfHm-3ZQ
+
+./node_modules/karma/bin/karma start --auto-watch
