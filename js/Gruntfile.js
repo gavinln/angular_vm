@@ -329,7 +329,6 @@ module.exports = function (grunt) {
       unitAuto: {
         configFile: 'karma.conf.js',
         singleRun: false,
-        autoWatch: true,
         background: true
       }
     }
@@ -365,7 +364,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('autotest', [
-    'connect:test',
     'karma:unitAuto:start',
     'watch:autotest'
   ]);
