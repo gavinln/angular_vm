@@ -40,3 +40,5 @@ http://www.youtube.com/watch?v=AKwqfHm-3ZQ
 
 # Runs tests automatically when saving files
 ./node_modules/karma/bin/karma start
+
+Connect one or more browsers to http://localhost:8080/

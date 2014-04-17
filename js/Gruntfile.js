@@ -38,10 +38,10 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma:test']
       },
-      autotest: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/{,*/}*.js'],
-        tasks: ['karma:unitAuto:run']
-      },
+      //autotest: {
+      //  files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/{,*/}*.js'],
+      //  tasks: ['karma:unitAuto:run']
+      //},
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -364,8 +364,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('autotest', [
-    'karma:unitAuto:start',
-    'watch:autotest'
+    'karma:unitAuto:start'
+    //'watch:autotest'
   ]);
 
   grunt.registerTask('build', [
