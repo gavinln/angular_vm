@@ -10,10 +10,12 @@
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
-  require('load-grunt-tasks')(grunt);
+  // require('load-grunt-tasks')(grunt); // replaced by jit-grunt
 
   // Time how long tasks take. Can help when optimizing build times
-  require('time-grunt')(grunt);
+  // require('time-grunt')(grunt); // replaced by jit-grunt
+
+  require('jit-grunt')(grunt);
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -36,12 +38,8 @@ module.exports = function (grunt) {
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma:test']
+        tasks: ['newer:jshint:test', 'karma:unit']
       },
-      //autotest: {
-      //  files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/{,*/}*.js'],
-      //  tasks: ['karma:unitAuto:run']
-      //},
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -361,11 +359,6 @@ module.exports = function (grunt) {
     'autoprefixer',
     'connect:test',
     'karma:unit'
-  ]);
-
-  grunt.registerTask('autotest', [
-    'karma:unitAuto:start'
-    //'watch:autotest'
   ]);
 
   grunt.registerTask('build', [

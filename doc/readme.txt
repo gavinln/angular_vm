@@ -42,3 +42,6 @@ http://www.youtube.com/watch?v=AKwqfHm-3ZQ
 ./node_modules/karma/bin/karma start
 
 Connect one or more browsers to http://localhost:8080/
+
+# Run jshint
+./node_modules/grunt-contrib-jshint/node_modules/jshint/bin/jshint app/scripts test/
