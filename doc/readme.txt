@@ -42,3 +42,6 @@ http://www.youtube.com/watch?v=AKwqfHm-3ZQ
 ./node_modules/karma/bin/karma start
 
 Connect one or more browsers to http://localhost:8080/
+
+To login to the VM using a username/password use the following
+vagrant/vagrant
