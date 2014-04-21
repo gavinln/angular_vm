@@ -45,3 +45,6 @@ Connect one or more browsers to http://localhost:8080/
 
 To login to the VM using a username/password use the following
 vagrant/vagrant
+
+# Run jshint without grunt
+./node_modules/grunt-contrib-jshint/node_modules/jshint/bin/jshint app/scripts test/
