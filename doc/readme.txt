@@ -43,5 +43,28 @@ http://www.youtube.com/watch?v=AKwqfHm-3ZQ
 
 Connect one or more browsers to http://localhost:8080/
 
-# Run jshint
+To login to the VM using a username/password use the following
+vagrant/vagrant
+
+# Run jshint without grunt
 ./node_modules/grunt-contrib-jshint/node_modules/jshint/bin/jshint app/scripts test/
+
+Vagrant provision
+
+c:\ws\angular_vm>vagrant provision (1 time)
+==> default: Running provisioner: puppet...
+Running Puppet with vagrant.pp...
+stdin: is not a tty
+notice: /Stage[main]/Init/Exec[update_apt]/returns: executed successfully
+notice: /Stage[main]/Googlechrome::Repo::Debian/Apt::Source[google-chrome]/File[google-chrome.list]/content: content changed '{md5}ef2f911e6b9fa4988bb49f343956208e' to '{md5}46f19f5346e1d757689b785ea02022e4'
+notice: /Stage[main]/Apt::Update/Exec[apt_update]: Triggered 'refresh' from 1 events
+notice: /Stage[main]/Xvfb/Service[xvfb]/ensure: ensure changed 'stopped' to 'running'
+notice: Finished catalog run in 17.36 seconds
+
+c:\ws\angular_vm>vagrant provision (2 and subsequent times)
+==> default: Running provisioner: puppet...
+Running Puppet with vagrant.pp...
+stdin: is not a tty
+notice: /Stage[main]/Init/Exec[update_apt]/returns: executed successfully
+notice: /Stage[main]/Xvfb/Service[xvfb]/ensure: ensure changed 'stopped' to 'running'
+notice: Finished catalog run in 10.94 seconds

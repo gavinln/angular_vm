@@ -111,6 +111,15 @@ http://localhost:9000/
 [13]: http://karma-runner.github.io/
 [14]: http://jasmine.github.io/2.0/introduction.html
 
+Frequently asked questions
+--------------------------
+
+####How do I install all the node modules if `npm install` is interrupted?
+
+To re-install all the node modules delete the `vagrant/js/node_modules`
+directory and run step 4 again.
+
+
 Requirements
 ------------
 
