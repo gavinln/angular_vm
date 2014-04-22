@@ -4,31 +4,35 @@ angular.module('angularVmApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.router'
 ])
-.config(function ($routeProvider) {
-  $routeProvider
-  .when('/', {
+.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/home');
+  $stateProvider
+  .state('home', {
+    url: '/home',
     templateUrl: 'views/main.html',
     controller: 'MainCtrl'
   })
-  .when('/spring', {
+  .state('home.spring', {
+    url: '/spring',
     templateUrl: 'views/spring.html',
     controller: 'SpringCtrl'
   })
-  .when('/summer', {
+  .state('home.summer', {
+    url: '/summer',
     templateUrl: 'views/summer.html',
     controller: 'SummerCtrl'
   })
-  .when('/autumn', {
+  .state('home.autumn', {
+    url: '/autumn',
     templateUrl: 'views/autumn.html',
     controller: 'AutumnCtrl'
   })
-  .when('/winter', {
+  .state('home.winter', {
+    url: '/winter',
     templateUrl: 'views/winter.html',
     controller: 'WinterCtrl'
-  })
-  .otherwise({
-    redirectTo: '/'
   });
 });
