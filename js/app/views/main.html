@@ -1,10 +1,10 @@
 <div class="row">
     <h4>Seasons</h4>
-    <div class="row">
-        <ul ng-repeat="(season, holidays) in seasons">
-            <li><a ui-sref=".{{ season }}">{{ season }}</a></li>
-        </ul>
-    </div>
-    <div class="row" ui-view="">
+    <ul class="nav nav-tabs">
+        <li ng-repeat-start="(season, holidays) in seasons"><a
+            ui-sref=".{{ season }}">{{ season }}</a></li>
+        <li ng-repeat-end=""></li>
+    </ul>
+    <div ui-view="">
     </div>
 </div>

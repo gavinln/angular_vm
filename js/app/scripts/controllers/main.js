@@ -5,7 +5,7 @@
     var angularVmApp = angular.module('angularVmApp');
 
     angularVmApp.factory('seasons', function () {
-        var state = {
+        var holidays = {
             'spring': ['April 18, 2014', 'May 26, 2014'],
             'summer': ['July 4, 2014'],
             'autumn': ['September 1, 2014', 'November 27, 2014'],
@@ -14,7 +14,7 @@
         var selection = ['April 18, 2014', 'November 27, 2014'];
 
         return {
-            state: state,
+            state: holidays,
             isSelected: function (date) {
                 return selection.indexOf(date) > -1;
             },

@@ -5,6 +5,7 @@ var angularVmApp = angular.module('angularVmApp');
 angularVmApp.controller(
     'SpringCtrl', ['$scope', '$http', 'seasons',
         function ($scope, $http, seasons) {
+            $scope.name = 'spring';
             $scope.season = seasons.state.spring;
             $scope.seasons = seasons;
             $http.get('http://www.omdbapi.com/?s=spring').success(
@@ -19,6 +20,7 @@ angularVmApp.controller(
 angularVmApp.controller(
     'SummerCtrl', ['$scope', '$http', 'seasons',
         function ($scope, $http, seasons) {
+            $scope.name = 'summer';
             $scope.season = seasons.state.summer;
             $scope.seasons = seasons;
             $http.get('http://www.omdbapi.com/?s=summer').success(
@@ -33,6 +35,7 @@ angularVmApp.controller(
 angularVmApp.controller(
     'AutumnCtrl', ['$scope', '$http', 'seasons',
         function ($scope, $http, seasons) {
+            $scope.name = 'autumn';
             $scope.season = seasons.state.autumn;
             $scope.seasons = seasons;
             $http.get('http://www.omdbapi.com/?s=autumn').success(
@@ -47,6 +50,7 @@ angularVmApp.controller(
 angularVmApp.controller(
     'WinterCtrl', ['$scope', '$http', 'seasons',
         function ($scope, $http, seasons) {
+            $scope.name = 'winter';
             $scope.season = seasons.state.winter;
             $scope.seasons = seasons;
             $http.get('http://www.omdbapi.com/?s=winter').success(
