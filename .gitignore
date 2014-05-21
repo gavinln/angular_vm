@@ -1,6 +1,7 @@
 .tmp
 js/node_modules
 js/app/bower_components
+js/app/pretty
 *.pyc
 *.log
 *~
