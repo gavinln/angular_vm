@@ -14,6 +14,7 @@ module.exports = function (grunt) {
     // Time how long tasks take. Can help when optimizing build times
     // require('time-grunt')(grunt); // replaced by jit-grunt
 
+    grunt.loadNpmTasks('grunt-prettify');
     require('jit-grunt')(grunt);
 
     // Define the configuration for all the tasks
@@ -327,6 +328,19 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js',
                 singleRun: false,
                 background: true
+            }
+        },
+        prettify: {
+            options: {
+                indent: 4,
+                indent_char: ' ',
+                wrap_line_length: 78,
+                brace_style: 'collapse',
+                unformatted: ['a', 'sub', 'sup', 'b', 'i', 'u']
+            },
+            one: {
+                src: 'app/index.html',
+                dest: 'app/pretty/index.html'
             }
         }
     });
