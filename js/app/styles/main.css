@@ -31,6 +31,12 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
+/* Customize row */
+.row {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
 /* Customize container */
 @media (min-width: 768px) {
   .container {
