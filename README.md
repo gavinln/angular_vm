@@ -129,9 +129,12 @@ Frequently asked questions
 
 ####How do I install all the node modules if `npm install` is interrupted?
 
-To re-install all the node modules delete the `vagrant/js/node_modules`
+To re-install all the node modules delete the `/vagrant/js/node_modules`
 directory and run step 4 again.
 
+    ```bash
+    rm -rf /vagrant/js/node_modules
+    ```
 
 Requirements
 ------------
