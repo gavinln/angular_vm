@@ -15,7 +15,10 @@ module.exports = function (grunt) {
     // require('time-grunt')(grunt); // replaced by jit-grunt
 
     grunt.loadNpmTasks('grunt-prettify');
-    require('jit-grunt')(grunt);
+    require('jit-grunt')(grunt, {
+        useminPrepare: 'grunt-usemin',
+        cdnify: 'grunt-google-cdn'
+    });
 
     // Define the configuration for all the tasks
     grunt.initConfig({
@@ -274,6 +277,12 @@ module.exports = function (grunt) {
                 cwd: '<%= yeoman.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            images: {
+                expand: true,
+                cwd: '<%= yeoman.app %>/images',
+                src: '{,*/}*.{png,jpg,jpeg,gif}',
+                dest: '<%= yeoman.dist %>/images'
             }
         },
 
@@ -287,7 +296,9 @@ module.exports = function (grunt) {
             ],
             dist: [
                 'copy:styles',
-                'imagemin',
+                // Adding copy:images as imagemin does not work
+                'copy:images',
+                //'imagemin',
                 'svgmin'
             ]
         },
