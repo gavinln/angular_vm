@@ -101,7 +101,7 @@ module.exports = function (grunt) {
                 reporter: require('jshint-stylish')
             },
             all: [
-                'Gruntfile.js',
+                '!Gruntfile.js',
                 '<%= yeoman.app %>/scripts/{,*/}*.js'
             ],
             test: {
@@ -326,8 +326,7 @@ module.exports = function (grunt) {
             },
             unitAuto: {
                 configFile: 'karma.conf.js',
-                singleRun: false,
-                background: true
+                singleRun: false
             }
         },
         prettify: {

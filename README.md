@@ -94,15 +94,28 @@ http://localhost:9000/
 11. Run unit tests using the [Karma][13] test runner with the [Jasmine][14] framework.
 
     ```bash
-    grunt test
+    grunt karma:unit
     ```
 
-12. Type `exit` to quit the virtual machine
+12. To keep the unit tests running while you update the code
+    ```bash
+    grunt karma:unitAuto
+    ```
 
-13. To destroy the VM
+13. To stop the server type `Ctrl+C`
+
+14. Type `exit` to quit the virtual machine
+
+15. To halt the VM type (fast to startup after a halt command)
 
     ```
-    vagrant destroy -f
+    vagrant halt
+    ```
+
+16. To destroy the VM (slow to create VM after a destroy command)
+
+    ```
+    vagrant destroy
     ```
 
 [10]: http://www.jshint.com/
