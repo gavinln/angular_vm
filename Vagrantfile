@@ -1,6 +1,27 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script = <<SCRIPT
+
+    # Exit on any errors.
+    set -e
+
+    # install puppet modules
+    (puppet module list | grep puppetlabs-apt) ||
+        puppet module install -v 1.5.2 puppetlabs-apt
+
+    (puppet module list | grep maestrodev-wget) ||
+        puppet module install -v 1.5.6 maestrodev-wget
+
+    (puppet module list | grep puppetlabs-stdlib) ||
+        puppet module install -v 4.3.2 puppetlabs-stdlib
+
+    (puppet module list | grep willdurand-nodejs) ||
+        puppet module install -v 1.8.3 willdurand-nodejs
+
+SCRIPT
+
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -10,11 +31,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise64"
+  config.vm.box = "trusty64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box_url = "https://vagrantcloud.com/ubuntu/trusty64/version/1/provider/virtualbox.box"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
@@ -60,6 +81,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   # View the documentation for the provider you're using for more
   # information on available options.
+
+  config.vm.provision "shell", inline: $script
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
