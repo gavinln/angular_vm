@@ -52,7 +52,8 @@ Running
 4. Install project dependencies for node.js
 
     ```bash
-    sudo npm install --no-bin-links
+    npm install grunt-cli --no-bin-links
+    npm install --no-bin-links
     ```
 
 5. Install javascript libraries using bower
