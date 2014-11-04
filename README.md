@@ -52,7 +52,6 @@ Running
 4. Install project dependencies for node.js
 
     ```bash
-    npm install grunt-cli --no-bin-links
     npm install --no-bin-links
     ```
 
