@@ -68,3 +68,9 @@ stdin: is not a tty
 notice: /Stage[main]/Init/Exec[update_apt]/returns: executed successfully
 notice: /Stage[main]/Xvfb/Service[xvfb]/ensure: ensure changed 'stopped' to 'running'
 notice: Finished catalog run in 10.94 seconds
+
+
+To install node_modules in the $HOME directory
+mkdir -p ~/npm
+npm config set prefix ~/npm
+export PATH="$PATH:$HOME/npm/bin"

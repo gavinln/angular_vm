@@ -1,6 +1,27 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script = <<SCRIPT
+
+    # Exit on any errors.
+    set -e
+
+    # install puppet modules
+    (puppet module list | grep puppetlabs-apt) ||
+        puppet module install -v 1.5.2 puppetlabs-apt
+
+    (puppet module list | grep maestrodev-wget) ||
+        puppet module install -v 1.5.6 maestrodev-wget
+
+    (puppet module list | grep puppetlabs-stdlib) ||
+        puppet module install -v 4.3.2 puppetlabs-stdlib
+
+    (puppet module list | grep willdurand-nodejs) ||
+        puppet module install -v 1.8.3 willdurand-nodejs
+
+SCRIPT
+
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -60,6 +81,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   # View the documentation for the provider you're using for more
   # information on available options.
+
+  config.vm.provision "shell", inline: $script
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.

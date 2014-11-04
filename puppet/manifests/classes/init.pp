@@ -21,7 +21,7 @@ class init {
                 ];
             }
             $misc_packages = ['make', 'curl', 'git-core',
-                'smbfs', 'tmux']
+                'cifs-utils', 'tmux']
             package { $misc_packages:
                 ensure => present,
                 require => [
