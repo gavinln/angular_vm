@@ -14,7 +14,7 @@ class javascript {
     }
     package { 'yo':
         provider => npm,
-        ensure => installed,
+        ensure => '1.3.2',
         require => Class['nodejs']
     }
     package { 'generator-angular':
