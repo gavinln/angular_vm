@@ -9,9 +9,9 @@ angular_vm
 About
 -----
 
-This project provides a [Ubuntu (12.04)][2] [Vagrant][3] Virtual Machine (VM) with [AngularJS][4] for web applications in [Javascript][5]. It also includes the following useful libraries.
+This project provides a [Ubuntu (14.04)][2] [Vagrant][3] Virtual Machine (VM) with [AngularJS][4] for web applications in [Javascript][5]. It also includes the following useful libraries.
 
-[2]: http://releases.ubuntu.com/precise/
+[2]: http://releases.ubuntu.com/14.04/
 [3]: http://www.vagrantup.com/
 [4]: http://angularjs.org/
 [5]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
