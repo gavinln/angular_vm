@@ -49,28 +49,16 @@ vagrant/vagrant
 # Run jshint without grunt
 ./node_modules/grunt-contrib-jshint/node_modules/jshint/bin/jshint app/scripts test/
 
-Vagrant provision
-
-c:\ws\angular_vm>vagrant provision (1 time)
-==> default: Running provisioner: puppet...
-Running Puppet with vagrant.pp...
-stdin: is not a tty
-notice: /Stage[main]/Init/Exec[update_apt]/returns: executed successfully
-notice: /Stage[main]/Googlechrome::Repo::Debian/Apt::Source[google-chrome]/File[google-chrome.list]/content: content changed '{md5}ef2f911e6b9fa4988bb49f343956208e' to '{md5}46f19f5346e1d757689b785ea02022e4'
-notice: /Stage[main]/Apt::Update/Exec[apt_update]: Triggered 'refresh' from 1 events
-notice: /Stage[main]/Xvfb/Service[xvfb]/ensure: ensure changed 'stopped' to 'running'
-notice: Finished catalog run in 17.36 seconds
-
-c:\ws\angular_vm>vagrant provision (2 and subsequent times)
-==> default: Running provisioner: puppet...
-Running Puppet with vagrant.pp...
-stdin: is not a tty
-notice: /Stage[main]/Init/Exec[update_apt]/returns: executed successfully
-notice: /Stage[main]/Xvfb/Service[xvfb]/ensure: ensure changed 'stopped' to 'running'
-notice: Finished catalog run in 10.94 seconds
-
-
 To install node_modules in the $HOME directory
 mkdir -p ~/npm
 npm config set prefix ~/npm
 export PATH="$PATH:$HOME/npm/bin"
+
+
+The following do not install correctly when using "npm install --no-bin-links"
+1. "grunt-contrib-imagemin": "^0.8.1",
+2. "grunt-google-cdn": "^0.4.0",
+
+Need to disable compass
+//'concurrent:server',
+
