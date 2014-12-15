@@ -21,7 +21,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'app/scripts/**/*.js',
-      'test/mock/**/*.js',
+      //'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
 
@@ -39,13 +39,24 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: [
-      'PhantomJS'
-    ],
+    //browsers: [
+    //  'PhantomJS'
+    //],
+
+    browsers: ['ChromeWithoutSecurity'],
+
+    // with custom flags
+    customLaunchers: {
+      ChromeWithoutSecurity: {
+        base: 'Chrome',
+        flags: ['--disable-web-security']
+      }
+    },
 
     // Which plugins to enable
     plugins: [
-      'karma-phantomjs-launcher',
+      //'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-jasmine'
     ],
 

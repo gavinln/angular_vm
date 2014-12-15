@@ -403,6 +403,10 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
+      },
+      unitAuto: {
+        configFile: 'test/karma.conf.js',
+        singleRun: false
       }
     }
   });
