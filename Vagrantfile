@@ -22,6 +22,8 @@ $script = <<SCRIPT
     (puppet module list | grep puppetlabs-mongodb) ||
         puppet module install -v 0.8.0 puppetlabs-mongodb
 
+    (puppet module list | grep acme-ohmyzsh) ||
+        puppet module install -v 0.1.2 acme-ohmyzsh
 SCRIPT
 
 
