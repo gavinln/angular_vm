@@ -1,6 +1,6 @@
 class javascript {
     class { 'nodejs':
-        version => 'stable'
+        version => 'v0.10.33'
     }
     package { 'bower':
         provider => npm,
@@ -15,6 +15,11 @@ class javascript {
     package { 'yo':
         provider => npm,
         ensure => '1.3.2',
+        require => Class['nodejs']
+    }
+    package { 'gulp':
+        provider => npm,
+        ensure => installed,
         require => Class['nodejs']
     }
     package { 'generator-angular':

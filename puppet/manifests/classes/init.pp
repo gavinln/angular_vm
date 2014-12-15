@@ -10,6 +10,7 @@ class init {
         ubuntu: {
             exec { "update_apt":
                 command => "sudo apt-get update",
+                timeout => 400
             }
 
             # Provides "add-apt-repository" command, useful if you need
@@ -30,9 +31,11 @@ class init {
             }
             package { ['build-essential', 'checkinstall']:
                 ensure => present,
-                require => [
-                    Exec['update_apt'],
-                ];
+                require => Exec['update_apt'];
+            }
+            package { 'ruby-dev':
+                ensure => present,
+                require => Exec['update_apt'];
             }
         }
     }
