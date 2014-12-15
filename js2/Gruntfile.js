@@ -49,9 +49,13 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-      compass: {
+      //compass: {
+      //  files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+      //  tasks: ['compass:server', 'autoprefixer']
+      //},
+      sass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+        tasks: ['sass', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -206,7 +210,17 @@ module.exports = function (grunt) {
         }
       }
     },
-
+    sass: {
+      options: {
+        sourceMap: true,
+        includePaths: ['./bower_components']
+      },
+      dist: {
+        files: {
+          '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
+        }
+      }
+    },
     // Renames files for browser caching purposes
     filerev: {
       dist: {
@@ -402,7 +416,8 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'concurrent:server',
+      //'concurrent:server',
+      'sass',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -416,7 +431,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'concurrent:test',
+    //'concurrent:test',
     'autoprefixer',
     'connect:test',
     'karma'
@@ -426,7 +441,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'wiredep',
     'useminPrepare',
-    'concurrent:dist',
+    //'concurrent:dist',
     'autoprefixer',
     'concat',
     'ngAnnotate',
