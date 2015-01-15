@@ -62,3 +62,10 @@ The following do not install correctly when using "npm install --no-bin-links"
 Need to disable compass
 //'concurrent:server',
 
+
+mkdir ~/node_modules
+mkdir node_modules
+sudo mount -o bind ~/node_modules node_modules
+
+npm install -g karma-cli
+

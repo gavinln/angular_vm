@@ -1,6 +1,5 @@
 class javascript {
     class { 'nodejs':
-        version => 'v0.10.33'
     }
     package { 'bower':
         provider => npm,
@@ -12,9 +11,13 @@ class javascript {
         ensure => installed,
         require => Class['nodejs']
     }
+    package { 'karma-cli':
+        provider => npm,
+        ensure => installed,
+        require => Class['nodejs']
+    }
     package { 'yo':
         provider => npm,
-        ensure => '1.3.2',
         require => Class['nodejs']
     }
     package { 'gulp':
@@ -23,6 +26,11 @@ class javascript {
         require => Class['nodejs']
     }
     package { 'generator-angular':
+        provider => npm,
+        ensure => installed,
+        require => Package['yo']
+    }
+    package { 'generator-gulp-angular':
         provider => npm,
         ensure => installed,
         require => Package['yo']
