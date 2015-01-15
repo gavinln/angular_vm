@@ -1,5 +1,6 @@
 class javascript {
     class { 'nodejs':
+        version => 'v0.10.33'
     }
     package { 'bower':
         provider => npm,
