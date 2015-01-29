@@ -67,5 +67,6 @@ mkdir ~/node_modules
 mkdir node_modules
 sudo mount -o bind ~/node_modules node_modules
 
-npm install -g karma-cli
-
+rm -rf ~/.npm
+npm cache clean
+npm install --no-bin-links
