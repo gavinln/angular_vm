@@ -19,8 +19,8 @@ $script = <<SCRIPT
     (puppet module list | grep willdurand-nodejs) ||
         puppet module install -v 1.8.3 willdurand-nodejs
 
-    (puppet module list | grep puppetlabs-mongodb) ||
-        puppet module install -v 0.8.0 puppetlabs-mongodb
+    (puppet module list | grep thias-samba) ||
+        puppet module install -v 0.1.5 thias-samba
 
     (puppet module list | grep acme-ohmyzsh) ||
         puppet module install -v 0.1.2 acme-ohmyzsh
