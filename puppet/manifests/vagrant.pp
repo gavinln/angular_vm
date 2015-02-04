@@ -14,6 +14,7 @@ class dev {
     class {
         init:;
         javascript: require => Class[init];
+        samba_share: require => Class[init];
         custom: require => Class[init];
     }
 }
