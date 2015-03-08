@@ -64,10 +64,6 @@ module.exports = function(config) {
     // if true, it capture browsers, run tests and exit
     singleRun: false,
 
-    junitReporter : {
-      outputFile: 'test-results.xml'
-    },
-
     colors: true,
 
     // level of logging
