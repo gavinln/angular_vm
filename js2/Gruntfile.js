@@ -418,8 +418,8 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true,
-        reporters = ['dots', 'junit'],
-        junitReporter = {
+        reporters: ['dots', 'junit'],
+        junitReporter: {
           outputFile: 'test-results.xml'
         }
       }
