@@ -9,6 +9,10 @@ js/app/pretty
 *.class
 *.swp
 .vagrant
-express/nodetest1/node_modules
+js2/node_modules
+js2/bower_components
+js2/dist
+js2/.tmp
+js2/.sass-cache
 
 
