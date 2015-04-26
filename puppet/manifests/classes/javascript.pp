@@ -26,6 +26,11 @@ class javascript {
         ensure => installed,
         require => Package['yo']
     }
+    package { 'gulp':
+        provider => npm,
+        ensure => installed,
+        require => Class['nodejs']
+    }
     package { 'generator-gulp-angular':
         provider => npm,
         ensure => installed,

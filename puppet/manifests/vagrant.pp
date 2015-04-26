@@ -13,8 +13,9 @@ Exec {
 class dev {
     class {
         init:;
+        ohmyzsh_setup:;
         javascript: require => Class[init];
-#        samba_share: require => Class[init];
+        samba_share: require => Class[init];
 #        custom: require => Class[init];
     }
 }
