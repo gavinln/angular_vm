@@ -15,6 +15,9 @@ cd /srv/share
 
 7. gulp serve
 
+Add vagrant to the docker group
+sudo usermod -aG docker vagrant
+
 
 
 
