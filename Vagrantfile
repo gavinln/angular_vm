@@ -24,6 +24,10 @@ $script = <<SCRIPT
 
     (puppet module list | grep acme-ohmyzsh) ||
         puppet module install -v 0.1.2 acme-ohmyzsh
+
+    (puppet module list | grep garethr-docker) ||
+        puppet module install -v 2.0.0 garethr-docker
+
 SCRIPT
 
 
