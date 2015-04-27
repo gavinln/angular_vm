@@ -18,6 +18,10 @@ cd /srv/share
 Add vagrant to the docker group
 sudo usermod -aG docker vagrant
 
+set DOCKER_HOST=192.168.33.10:2375
+docker ps
+
+
 
 
 

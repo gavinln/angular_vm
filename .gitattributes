@@ -5,3 +5,4 @@
 *.rb text eol=lf
 *.erb text eol=lf
 *.init text eol=lf
+Dockerfile text eol=lf
