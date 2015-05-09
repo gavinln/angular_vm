@@ -21,6 +21,8 @@ import platform
 
 script_dir = os.path.dirname(__file__)
 
+env.hosts = ['localhost']
+
 env.user = None
 env.host_string = None
 env.key_filename = None
