@@ -28,6 +28,12 @@ $script = <<SCRIPT
     (puppet module list | grep garethr-docker) ||
         puppet module install -v 2.0.0 garethr-docker
 
+    (puppet module list | grep p0deje-display) ||
+        puppet module install -v 0.3.1 p0deje-display
+
+    (puppet module list | grep jamesnetherton-google_chrome) ||
+        puppet module install -v 0.1.0 jamesnetherton-google_chrome
+    
 SCRIPT
 
 

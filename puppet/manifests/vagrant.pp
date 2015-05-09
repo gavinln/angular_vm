@@ -16,6 +16,8 @@ class dev {
         ohmyzsh_setup:;
         javascript: require => Class[init];
         samba_share: require => Class[init];
+        display: require => Class[init];
+        google_chrome: require => Class[init];
         docker:
             version => '1.6.0',
             tcp_bind    => 'tcp://0.0.0.0:2375',
