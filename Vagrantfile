@@ -45,13 +45,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/trusty64"
-
   if Vagrant.has_plugin?("vagrant-cachier")
      # Configure cached packages to be shared between instances of the same base box.
      # More info on http://fgrehm.viewdocs.io/vagrant-cachier/usage
      config.cache.scope = :box
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    # set auto_update to false, if you do NOT want to check the correct 
+    # additions version when booting this machine
+    config.vbguest.auto_update = false
   end
 
   # user insecure key
@@ -131,12 +134,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # #   content => "Welcome to your Vagrant-built virtual machine!
   # #               Managed by Puppet.\n"
   # # }
-  #
-  config.vm.provision :puppet do |puppet|
-    puppet.manifest_file  = "vagrant.pp"
-    puppet.manifests_path = "puppet/manifests"
-    puppet.module_path = "puppet/modules"
-    #puppet.options = "--verbose --debug"
+
+  config.vm.define :vm, autostart: false do |machine|
+    # Every Vagrant virtual environment requires a box to build off of.
+    machine.vm.box = "ubuntu/trusty64"
+
+    machine.vm.provision "puppet" do |puppet|
+      puppet.manifest_file  = "vagrant.pp"
+      puppet.manifests_path = "puppet/manifests"
+      puppet.module_path = "puppet/modules"
+      #puppet.options = "--verbose --debug"
+      puppet.options = "--certname=%s" % :vm
+    end
+  end
+
+  config.vm.define :clone, autostart: false do |machine|
+    # Every Vagrant virtual environment requires a box to build off of.
+    machine.vm.box = "angular_vm_clone"
+
+    machine.vm.provision "puppet" do |puppet|
+      puppet.manifest_file  = "vagrant.pp"
+      puppet.manifests_path = "puppet/manifests"
+      puppet.module_path = "puppet/modules"
+      #puppet.options = "--verbose --debug"
+      puppet.options = "--certname=%s" % :vm
+    end
   end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
