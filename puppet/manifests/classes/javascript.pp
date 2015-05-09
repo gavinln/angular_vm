@@ -7,11 +7,6 @@ class javascript {
         ensure => installed,
         require => Class['nodejs']
     }
-    package { 'grunt-cli':
-        provider => npm,
-        ensure => installed,
-        require => Class['nodejs']
-    }
     package { 'karma-cli':
         provider => npm,
         ensure => installed,
@@ -19,12 +14,8 @@ class javascript {
     }
     package { 'yo':
         provider => npm,
-        require => Class['nodejs']
-    }
-    package { 'generator-angular':
-        provider => npm,
         ensure => installed,
-        require => Package['yo']
+        require => Class['nodejs']
     }
     package { 'gulp':
         provider => npm,
