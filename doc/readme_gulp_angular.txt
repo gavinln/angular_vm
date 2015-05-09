@@ -33,10 +33,17 @@ npm -v
 Update npm version
 sudo /usr/local/node/node-default/bin/npm install -g npm@2.9.1
 
+For karma and protractor to work
+sudo apt-get install openjdk-7-jre
 
+gulp test
+gulp protractor
 
+vagrant package --output angular_vm_clone.box vm
+move angular_vm_clone.box ..
 
+vagrant box list
+vagrant box add --name angular_vm_clone ../angular_vm_clone.box
 
-
-
+vagrant plugin install vagrant-vbguest
 
