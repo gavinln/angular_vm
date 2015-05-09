@@ -21,6 +21,20 @@ sudo usermod -aG docker vagrant
 set DOCKER_HOST=192.168.33.10:2375
 docker ps
 
+If there is an error with npm install run
+rm -rf ~/.npm
+
+Get version of node
+node -v
+
+Get version of npm
+npm -v
+
+Update npm version
+sudo /usr/local/node/node-default/bin/npm install -g npm@2.9.1
+
+
+
 
 
 
