@@ -24,7 +24,7 @@ if [ ! -f ~/.z ]; then
 fi
 
 # setup ohmyzsh plugins
-sed -i "s/plugins=(git)/plugins=(git fabric aws)/" $ZSHRC
+sed -i "s/plugins=(git)/plugins=(git fabric)/" $ZSHRC
 
 echo To enable zsh for the current user run:
 echo sudo chsh -s /bin/zsh $USER
