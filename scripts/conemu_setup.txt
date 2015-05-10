@@ -1,0 +1,2 @@
+vagrant ssh clone -cur_console:f
+vagrant ssh clone -cur_console:sH
