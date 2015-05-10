@@ -3,17 +3,25 @@ To create a new gulp angular project using yeoman
 1. Change to the shared directory
 cd /srv/share
 
-2. mkdir ga_proj
+2. Create directory for the project
+mkdir ga_proj
 
-3. cd ga_proj
+3. Change to the project directory
+cd ga_proj
 
 4. yo gulp-angular
 
-5. npm install
+5. Update npm version
+sudo /usr/local/node/node-default/bin/npm install -g npm@2.9.1
 
-6. bower install
+6. Install npm modules
+npm install
 
-7. gulp serve
+7. Install bower modules
+bower install
+
+8. Start nodejs server
+gulp serve
 
 Add vagrant to the docker group
 sudo usermod -aG docker vagrant
@@ -30,8 +38,6 @@ node -v
 Get version of npm
 npm -v
 
-Update npm version
-sudo /usr/local/node/node-default/bin/npm install -g npm@2.9.1
 
 For karma and protractor to work
 sudo apt-get install openjdk-7-jre
@@ -47,3 +53,10 @@ vagrant box add --name angular_vm_clone ../angular_vm_clone.box
 
 vagrant plugin install vagrant-vbguest
 
+sudo su
+PATH=/usr/local/node/node-d efault/bin:$PATH
+npm install -g protractor
+
+export DISPLAY=:0
+sudo service xvfb start
+sudo service x11vnc start
