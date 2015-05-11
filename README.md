@@ -31,6 +31,12 @@ There are [Puppet][9] scripts that automatically install the software when the V
 Running
 -------
 
+1. To connect to the VM
+
+    ```
+    fab ssh
+    ```
+
 1. To start the virtual machine(VM) type
 
     ```

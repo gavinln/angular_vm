@@ -89,14 +89,30 @@ def get_ip_address(instance, key_name, ip):
 
 @task
 def ssh():
+    ''' ssh into clone instance '''
+    # ssh_script = '. /etc/profile; ~/.profile; zsh'
+    # /home/vagrant/.profile does not exist
+    ssh_script = '. /etc/profile; cd /srv/share; zsh'
+    local('vagrant ssh clone -- -t "{}"'.format(ssh_script))
+
+
+@task
+def ssh():
+    ''' ssh into clone instance '''
+    # ssh_script = '. /etc/profile; ~/.profile; zsh'
+    # /home/vagrant/.profile does not exist
+    ssh_script = '. /etc/profile; cd /srv/share; zsh'
+    local('vagrant ssh clone -- -t "{}"'.format(ssh_script))
+
+
+def ssh_old():
     ''' ssh into ec2 instance '''
     check_host_connection('ssh')
     local('ssh -i "{}" {}@{}'.format(
         env.key_filename, env.user, env.host_string))
 
 
-@task(name='ssh-config')
-def ssh_config():
+def ssh_config_old():
     ''' set up ssh config file '''
     user_root = os.path.expanduser('~')
     print(user_root)

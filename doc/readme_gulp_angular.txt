@@ -60,3 +60,8 @@ npm install -g protractor
 export DISPLAY=:0
 sudo service xvfb start
 sudo service x11vnc start
+
+Gulp options
+gulp serve
+gulp scripts
+
