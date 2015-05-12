@@ -97,7 +97,7 @@ def ssh():
 
 
 @task
-def ssh():
+def ssh_tmux():
     ''' ssh into clone instance '''
     # ssh_script = '. /etc/profile; ~/.profile; zsh'
     # /home/vagrant/.profile does not exist
