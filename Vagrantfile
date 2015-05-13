@@ -151,6 +151,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :clone, autostart: false do |machine|
     # Every Vagrant virtual environment requires a box to build off of.
     machine.vm.box = "angular_vm_clone"
+    machine.vm.box_url = "../angular_vm_clone.box"
 
     machine.vm.provision "puppet" do |puppet|
       puppet.manifest_file  = "vagrant.pp"
