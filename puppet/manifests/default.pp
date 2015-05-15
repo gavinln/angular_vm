@@ -15,6 +15,7 @@ node 'vm' {
         init:;
         ohmyzsh_setup:;
         javascript: require => Class[init];
+        java_setup: require => Class[init];
         samba_share: require => Class[init];
         display: require => Class[init];
         google_chrome: require => Class[init];

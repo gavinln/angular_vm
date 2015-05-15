@@ -7,6 +7,9 @@ $script = <<SCRIPT
     set -e
 
     # install puppet modules
+    (puppet module list | grep puppetlabs-java) ||
+        puppet module install -v 1.1.2 puppetlabs-java
+
     (puppet module list | grep puppetlabs-apt) ||
         puppet module install -v 1.5.2 puppetlabs-apt
 
@@ -140,7 +143,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     machine.vm.box = "ubuntu/trusty64"
 
     machine.vm.provision "puppet" do |puppet|
-      puppet.manifest_file  = "vagrant.pp"
+      puppet.manifest_file  = "default.pp"
       puppet.manifests_path = "puppet/manifests"
       puppet.module_path = "puppet/modules"
       #puppet.options = "--verbose --debug"
@@ -154,11 +157,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     machine.vm.box_url = "../angular_vm_clone.box"
 
     machine.vm.provision "puppet" do |puppet|
-      puppet.manifest_file  = "vagrant.pp"
+      puppet.manifest_file  = "default.pp"
       puppet.manifests_path = "puppet/manifests"
       puppet.module_path = "puppet/modules"
       #puppet.options = "--verbose --debug"
-      puppet.options = "--certname=%s" % :vm
+      puppet.options = "--certname=%s" % :clone
     end
   end
 

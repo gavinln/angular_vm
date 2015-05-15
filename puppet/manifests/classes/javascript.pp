@@ -27,6 +27,16 @@ class javascript {
         ensure => installed,
         require => Package['yo']
     }
+    package { 'protractor':
+        provider => npm,
+        ensure => installed,
+        require => Class['nodejs']
+    }
+    exec { "webdriver-manager_update":
+        command => "/usr/local/node/node-default/bin/webdriver-manager update",
+        path => "/usr/local/node/node-default/bin",
+        require => Class['nodejs']
+    }
     #exec { "npm_install":
     #    command => "npm install --no-bin-links",
     #    cwd => "/vagrant",
