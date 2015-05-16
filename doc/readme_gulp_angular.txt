@@ -20,8 +20,23 @@ npm install
 7. Install bower modules
 bower install
 
-8. Start nodejs server
+8. To see a list of gulp tasks
+gulp --tasks
+
+9. Start nodejs server
 gulp serve
+
+10. Go to http://192.168.33.10:3000/ to view the app
+
+11. To run jshint
+gulp scripts
+
+12. To run unit tests
+gulp test
+
+13. To run e2e tests
+gulp protractor
+
 
 Add vagrant to the docker group
 sudo usermod -aG docker vagrant
@@ -61,7 +76,20 @@ export DISPLAY=:0
 sudo service xvfb start
 sudo service x11vnc start
 
+The file /etc/profile.d/vagrant_display.sh
+automatically sets export DISPLAY=:0
+
 Gulp options
 gulp serve
 gulp scripts
+
+The following commands do not run any unit tests as they
+files are specified by gulp
+karma start
+karma run
+
+The following commands can also be used to run e2e tests
+gulp serve
+protractor
+
 
