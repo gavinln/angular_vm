@@ -8,21 +8,6 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 
-# setup z.sh to help traverse directories
-cp $DIR/z.sh ~/z.sh
-
-ZSHRC=~/.zshrc
-ZSH_SETUP="source ~/z.sh"
-
-if ! grep -qe "$ZSH_SETUP" $ZSHRC; then
-    echo "$ZSH_SETUP" >> $ZSHRC
-fi
-
-# Needed for z.sh
-if [ ! -f ~/.z ]; then
-    touch ~/.z
-fi
-
 # setup ohmyzsh plugins
 sed -i "s/plugins=(git)/plugins=(git fabric)/" $ZSHRC
 
