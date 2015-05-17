@@ -1,9 +1,16 @@
+from __future__ import print_function
 '''
 TODO: May need to fix error in
 http://askubuntu.com/questions/59458/
 error-message-when-i-run-sudo-unable-to-resolve-host-none
 '''
-from __future__ import print_function
+import os
+import subprocess
+import shutil
+import yaml
+import sys
+import platform
+from collections import namedtuple
 
 from fabric.api import run, env, task, roles, local, lcd
 from fabric.api import open_shell, put, cd, sudo
@@ -12,34 +19,60 @@ from fabric.api import settings
 from fabric.contrib.files import exists
 from fabric.contrib.project import rsync_project
 
-import os
-import shutil
-import yaml
-import sys
-import platform
-
 
 script_dir = os.path.dirname(__file__)
 
-env.hosts = ['localhost']
+env.hosts = None
 
-env.user = None
+env.user = 'vagrant'
+env.password = 'vagrant'
+
+env.roledefs = {
+    'local': ['localhost:22'],
+    'vm':    ['127.0.0.1:2222'],
+}
+
 env.host_string = None
 env.key_filename = None
 
 
-def check_instance(config, instance, ip=None):
-    if not instance:
-        print('No instance specified')
+def call_command_shell(command):
+    process = subprocess.Popen(command,
+                               stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE,
+                               shell=True)
+    return process.communicate()
 
-    if instance not in config.keys():
-        instances = tc.quote_items(config.keys())
-        instance_str = ', '.join(instances)
-        print('instance should be one of {}'.format(instance_str))
-        sys.exit(1)
 
-    if ip not in (None, 'public'):
-        print('ip should be either "public" or unspecified (default private)')
+def getVagrantSSH():
+    output, err = call_command_shell(['vagrant', 'ssh-config'])
+    lines = output.split(os.linesep)
+    lines = [line.strip() for line in lines]
+    paramNames = ['HostName ', 'Port ', 'User ', 'IdentityFile ']
+
+    paramValues = [None] * len(paramNames)
+    for line in lines:
+        for index, param in enumerate(paramNames):
+            if line.startswith(param):
+                paramValues[index] = line[len(param):].strip()
+                break
+    ParamSSH = namedtuple('ParamSSH', ['host', 'port', 'username', 'keyFile'])
+    # remove quotes for filename
+    paramValues[3] = paramValues[3].replace('"', '')
+
+    return ParamSSH._make(paramValues)
+
+
+def setHosts():
+    if sys.platform == 'win32':
+        paramSSH = getVagrantSSH()
+        env.roledefs['vm'] = ['{0}:{1}'.format(paramSSH.host, paramSSH.port)]
+        env.key_filename = paramSSH.keyFile
+        env.hosts = env.roledefs['vm']
+    elif sys.platform == 'linux2':
+        env.hosts = env.roledefs['local']
+
+setHosts()
 
 
 def check_host_connection(task_name):
@@ -87,7 +120,7 @@ def get_ip_address(instance, key_name, ip):
     return ip_address
 
 
-@task
+# @task
 def ssh():
     ''' ssh into clone instance '''
     # ssh_script = '. /etc/profile; ~/.profile; zsh'
@@ -96,13 +129,19 @@ def ssh():
     local('vagrant ssh clone -- -t "{}"'.format(ssh_script))
 
 
-@task
+# @task
 def ssh_tmux():
     ''' ssh into clone instance '''
     # ssh_script = '. /etc/profile; ~/.profile; zsh'
     # /home/vagrant/.profile does not exist
     ssh_script = '. /etc/profile; cd /srv/share; zsh'
     local('vagrant ssh clone -- -t "{}"'.format(ssh_script))
+
+
+@task
+def test():
+    with cd('/srv/share/angular_sass_gulp'):
+        run('gulp --no-color test')
 
 
 def ssh_old():
@@ -124,12 +163,14 @@ def ssh_config_old():
         shutil.copy(os.path.join(script_dir, 'config'), ssh_root)
         local('chmod 600 {0}'.format(os.path.join(ssh_root, 'config')))
     key_file = '~/.ssh/insecure_private_key'
-    key_url = 'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant'
+    key_url = ''.join([
+        'https://raw.githubusercontent.com/',
+        'mitchellh/vagrant/master/keys/vagrant'])
     local('wget -O {0} {1} && chmod 600 {0}'.format(
         key_file, key_url))
 
 
-@task
+# @task
 def host(instance=None, ip=None):
     ''' set ec2 host '''
     ip_address = get_ip_address(instance, key_name, ip)
