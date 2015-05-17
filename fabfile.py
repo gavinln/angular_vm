@@ -13,7 +13,7 @@ import platform
 from collections import namedtuple
 
 from fabric.api import run, env, task, roles, local, lcd
-from fabric.api import open_shell, put, cd, sudo
+from fabric.api import open_shell, put, cd, sudo, hide
 from fabric.api import settings
 
 from fabric.contrib.files import exists
@@ -138,10 +138,25 @@ def ssh_tmux():
     local('vagrant ssh clone -- -t "{}"'.format(ssh_script))
 
 
+def filter_output(err_out):
+    for line in err_out.split('\n'):
+        line = line.replace('\t', ' ' * 4)
+        fileIdx = line.find('/srv/share')
+        if fileIdx >= 0:
+            newLine = line.replace('/srv/share', 's:')
+            newLine = newLine.replace('/', '\\')
+            print(newLine)
+        else:
+            print(line)
+
+
 @task
 def test():
     with cd('/srv/share/angular_sass_gulp'):
-        run('gulp --no-color test')
+        with hide('output'), settings(warn_only=True):
+            output = run('gulp --no-color test')
+            if output.return_code > 0:
+                filter_output(output.stdout)
 
 
 def ssh_old():
