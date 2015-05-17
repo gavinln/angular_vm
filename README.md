@@ -18,51 +18,73 @@ This project provides a [Ubuntu (14.04)][2] [Vagrant][3] Virtual Machine (VM) wi
 
 * [node.js][6]
 * [bower][7]
-* [grunt][8]
+* [gulp][8]
 
 
 There are [Puppet][9] scripts that automatically install the software when the VM is started.
 
 [6]: http://nodejs.org/
 [7]: http://bower.io/
-[8]: http://gruntjs.com/
+[8]: http://gulpjs.com/
 [9]: http://puppetlabs.com/
 
 Running
 -------
 
-1. To connect to the VM
+## Setup the virtual machine
+
+1. Clone the project
 
     ```
-    fab ssh
+    git clone http://github.com/gavinln/angular_vm.git
+
     ```
+
+2. Change to the project directory
+
+    ```
+    cd angular_vm
+    ```
+
+## Work in the virtual machine (VM)
 
 1. To start the virtual machine(VM) type
 
     ```
-    vagrant up
+    vagrant up vm
     ```
 
 2. Connect to the VM
 
     ```
-    vagrant ssh
+    vagrant ssh vm
     ```
 
-3. Go to the project root directory
+3. Go to the javascript project root directory
 
     ```bash
-    cd /vagrant/js
+    cd /srv/share
     ```
 
-4. Install project dependencies for node.js
+4. Clone the javascript project
+
+    ```
+    git clone https://github.com/gavinln/angular_sass_gulp.git
+    ```
+
+5. Change to the project directory
+
+    ```
+    cd angular_sass_gulp
+    ```
+
+6. Install project dependencies for node.js
 
     ```bash
-    npm install --no-bin-links
+    npm install
     ```
 
-5. Install javascript libraries using bower
-
+7. Install javascript libraries using bower
 
     ```bash
     bower install
@@ -74,54 +96,70 @@ Running
     git config --global url."https://".insteadOf git://
     ```
 
-6. Start the Javascript server
+8. Display the list of gulp tasks
 
-    ```bash
-    grunt serve
+    ```
+    gulp --tasks
     ```
 
-7. Open the browser to the home page
-http://localhost:9000/
-
-8. To stop the server type `Ctrl+C`
-
-9. To check the Javascript code using [jshint][10]. A formatting error has been added.
+9. Start the Javascript server
 
     ```bash
-    grunt jshint
+    gulp serve
     ```
 
-10. Setup the [Xvfb][11] virtual display to run the [Chrome][12] browser.
+10. Open the browser to the home page
+http://192.168.33.10:3000/
+
+11. To stop the server type `Ctrl+C`
+
+12. To check the Javascript code using [jshint][10].
+
+    ```bash
+    gulp scripts
+    ```
+
+13. Run unit tests using the [Karma][11] test runner with the [Jasmine][12] framework.
+
+    ```
+    gulp test
+
+    ```
+
+14. Setup the [Xvfb][13] virtual display to run the [Chrome][14] browser.
 
     ```bash
     export DISPLAY=:0
     ```
 
-11. Run unit tests using the [Karma][13] test runner with the [Jasmine][14] framework.
+15. Run the Chrome browser (press Ctrl+c to stop)
+
+    ```
+    google-chrome
+    ```
+
+16. View the Xvfb display by opening vnc to 192.168.33.10:5900
+
+17. Run the end-to-end tests using [Protractor][15]
 
     ```bash
-    grunt karma:unit
+    gulp protractor
     ```
 
-12. To keep the unit tests running while you update the code
-    ```bash
-    grunt karma:unitAuto
-    ```
+## Exit the virtual machine
 
-13. To stop the server type `Ctrl+C`
+1. Type `exit` to quit the virtual machine
 
-14. Type `exit` to quit the virtual machine
-
-15. To halt the VM type (fast to startup after a halt command)
+2. To halt the VM type (fast to startup after a halt command)
 
     ```
-    vagrant halt
+    vagrant halt vm
     ```
 
-16. To destroy the VM (slow to create VM after a destroy command)
+3. To destroy the VM (slow to create VM after a destroy command)
 
     ```
-    vagrant destroy
+    vagrant destroy vm
     ```
 
 [10]: http://www.jshint.com/
@@ -129,6 +167,7 @@ http://localhost:9000/
 [12]: https://www.google.com/intl/en/chrome/browser/
 [13]: http://karma-runner.github.io/
 [14]: http://jasmine.github.io/2.0/introduction.html
+[15]: https://angular.github.io/protractor/#/
 
 Frequently asked questions
 --------------------------
@@ -142,18 +181,27 @@ directory and run step 4 again.
     rm -rf /vagrant/js/node_modules
     ```
 
+####How do I install npm modules if I get the error `EEXIST`
+
+Clean the npm cache and run `npm install` again.
+
+    ```bash
+    rm -rf ~/.npm
+    npm cache clean
+    ```
+
 Requirements
 ------------
 
 The following software is needed to get the software from github and run
-Vagrant. The Git environment also provides an [SSH  client][15] for Windows.
+Vagrant. The Git environment also provides an [SSH  client][16] for Windows.
 
-* [Oracle VM VirtualBox][16]
-* [Vagrant][17]
-* [Git][18]
+* [Oracle VM VirtualBox][17]
+* [Vagrant][18]
+* [Git][19]
 
-[15]: http://en.wikipedia.org/wiki/Secure_Shell
-[16]: https://www.virtualbox.org/
-[17]: http://vagrantup.com/
-[18]: http://git-scm.com/
+[16]: http://en.wikipedia.org/wiki/Secure_Shell
+[17]: https://www.virtualbox.org/
+[18]: http://vagrantup.com/
+[19]: http://git-scm.com/
 
