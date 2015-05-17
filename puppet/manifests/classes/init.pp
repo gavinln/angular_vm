@@ -37,11 +37,11 @@ class init {
                 ensure => present,
                 require => Exec['update_apt'];
             }
-            #file { '/etc/profile.d/autojump.sh':
-            #    ensure => present,
-            #    source => '/usr/share/autojump/autojump.sh',
-            #    require => Package['autojump']
-            #}
+            file { '/etc/profile.d/autojump.sh':
+                ensure => present,
+                source => '/usr/share/autojump/autojump.sh',
+                require => Package['autojump']
+            }
             package { 'ruby-dev':
                 ensure => present,
                 require => Exec['update_apt'];
