@@ -19,6 +19,7 @@ node 'vm' {
         samba_share: require => Class[init];
         display: require => Class[init];
         google_chrome: require => Class[init];
+        ranger_setup: require => Class[init];
         docker:
             version => '1.6.0',
             tcp_bind    => 'tcp://0.0.0.0:2375',
