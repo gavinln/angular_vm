@@ -78,6 +78,18 @@ Running
     cd angular_sass_gulp
     ```
 
+5. To modify the code from the shared folder
+
+    '''
+    chmod -R go+w .
+    '''
+
+5. To make git ignore chmod changes
+
+    '''
+    git config core.fileMode false
+    '''
+
 6. Install project dependencies for node.js
 
     ```bash
